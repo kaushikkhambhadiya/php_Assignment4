@@ -18,7 +18,7 @@
         <input type="radio" id="chips" name="snack" value="chips">
         <label for="chips">Chips $1.75</label><br><br>
         
-        Total coin entered Amount : $ <input id="totalPaid" name="totalPaid" value="0"><br><br>
+        Total coin entered Amount : $ <input id="totalPaid" name="totalPaid" value="0" readonly><br><br>
         
         <lable>Enter below Coins:</lable><br><br>
         
@@ -30,8 +30,38 @@
         
         <input type="submit" name="submit" id="submit" value="Pay Now">
 
-        
+        <input type="reset" name="cancel" id="cancel" value="Cancel">
+
     </form>
+    
+    <script>
+        
+    function addDollar() {
+        let totalPaid = parseFloat(document.getElementById("totalPaid").value);
+        totalPaid += 1;
+        document.getElementById("totalPaid").value = totalPaid.toFixed(2);
+    }
+
+    function add5cents() {
+        let totalPaid = parseFloat(document.getElementById("totalPaid").value);
+        totalPaid += 0.05;
+        document.getElementById("totalPaid").value = totalPaid.toFixed(2);
+    }
+
+    function add10cents() {
+        let totalPaid = parseFloat(document.getElementById("totalPaid").value);
+        totalPaid += 0.10;
+        document.getElementById("totalPaid").value = totalPaid.toFixed(2);
+    }
+
+    function add25cents() {
+        let totalPaid = parseFloat(document.getElementById("totalPaid").value);
+        totalPaid += 0.25;
+        document.getElementById("totalPaid").value = totalPaid.toFixed(2);
+    }
+    
+</script>
+
     
 </body>
     
