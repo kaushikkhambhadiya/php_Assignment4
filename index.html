@@ -24,7 +24,17 @@ function getmessage() {
 }
 
 function postdata() {
+    if (document.getElementById("username").value === "" || document.getElementById("message").value === "")
+            document.getElementById("errorMessage").innerHTML = "One of the inputs is missing.";
+        else {
+            var formData = new FormData();
+            formData.append("username", document.getElementById("username").value);
+            formData.append("message", document.getElementById("message").value);
 
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("POST", "input.php");
+            xmlhttp.send(formData);
+        }
 }
 getmessage();
  </script>
