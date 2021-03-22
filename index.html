@@ -1,16 +1,24 @@
 <html>
 <head>
+    <title>Part 2: Ajax</title>
+    <!-- CSS only bootstrap-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
  <body>
- <div id="display">
- </div>
- <p><input id="message" type="text" name="message"></p>
- <p><input id="username" type="text" name="username"></p>
- <p>
+ <h1 class="text-center">Enter Data</h1>
+ <p class="text-center"><label class="lead">Username:</label><input id="username" type="text" name="username"></p>
+ <p class="text-center"><label class="lead">Message:</label><input id="message" type="text" name="message"></p>
+ <p class="text-center">
  <button type="button" onclick="postdata()">Submit Message</button>
  </p>
+     
+<div id="display">
+ </div>
+
  </body>
-<script>  
+    
+<script>
+    
 function getmessage() {
      xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
@@ -24,8 +32,9 @@ function getmessage() {
 }
 
 function postdata() {
-    if (document.getElementById("username").value === "" || document.getElementById("message").value === "")
-            document.getElementById("errorMessage").innerHTML = "One of the inputs is missing.";
+    if (document.getElementById("username").value === "" || document.getElementById("message").value === "") {
+         document.getElementById("errorMessage").innerHTML = "*Both fields are requires.";
+    }
         else {
             var formData = new FormData();
             formData.append("username", document.getElementById("username").value);

@@ -3,7 +3,7 @@ require('mysqli_oop_connect.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($_POST['username']) || empty($_POST['message'])) {
-        echo "<p class='text-center text-danger'>*Both fields are require</p>";
+        echo "<p class='text-center text-danger'>*Both fields are requires</p>";
     } else {
         $username = $_POST['username'];
         $message = $_POST['message'];
