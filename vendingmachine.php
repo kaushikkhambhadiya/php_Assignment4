@@ -62,7 +62,57 @@
     
 </script>
 
-    
 </body>
     
 </html>
+
+<?php
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    if (!isset($_POST['snack'])) {
+        echo "<p style='color: red'>Please choose a snack</p>";
+    } else {
+        $totalPaid = $_POST['totalPaid'];
+        $snackName = $_POST['snack'];
+        switch ($snackName) {
+            case "chocolate":
+                if ($totalPaid < 1.25) {
+                    ShortOfMoney(1.25 - $totalPaid);
+                } else {
+                    checkout($snackName, $totalPaid, 1.25);
+                }
+                break;
+            case "pop":
+                if ($totalPaid < 1.50) {
+                    ShortOfMoney(1.50 - $totalPaid);
+                } else {
+                    checkout($snackName, $totalPaid, 1.50);
+                }
+                break;
+            case "chips":
+                if ($totalPaid < 1.75) {
+                    ShortOfMoney(1.75 - $totalPaid);
+                } else {
+                    checkout($snackName, $totalPaid, 1.75);
+                }
+                break;
+        }
+    }
+}
+
+function checkout($snackName,$totalPaid,$snackPrice)
+    {
+     $remainingBalance = $totalPaid - $snackPrice;;
+
+        if ($remainingBalance > 0) {
+            echo "<p style='color: green'>Enjoy your $snackName and here is your change :$ $remainingBalance</p>";
+        } else {
+            echo "<p style='color: green'>Enjoy your $snackName</p>";
+        }
+
+    }
+
+function ShortOfMoney($shortAmount){
+    echo "<p style='color: red'>Sorry , You are short of $ $shortAmount . Please insert more coins.</p>";
+}
+
+?>
